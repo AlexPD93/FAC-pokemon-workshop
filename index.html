@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Pokemon API</title>
   </head>
   <body>
@@ -15,16 +16,19 @@
     <img id="pokemonPic" />
     <div id="error"></div>
     <script>
+      let pokemonName = document.getElementById("pokemonName");
+      let pokemonImage = document.getElementById("pokemonPic");
       function handleSubmit(event) {
-        let pokemonName = document.getElementById("pokemonName");
-        let pokemonImage = document.getElementById("pokemonPic");
-        let errorMessage = document.getElementById("error");
         event.preventDefault();
+
+        let errorMessage = document.getElementById("error");
         let input = form.querySelector("input");
         let pokemon = input.value;
+
         fetchPokemon(pokemon)
           .then((response) => {
-            pokemonName.innerHTML = response.name;
+            setColour(response);
+            pokemonName.innerHTML = response.name.toUpperCase();
             pokemonPic.src = response.sprites.front_default;
           })
           .catch((error) => {
@@ -39,6 +43,38 @@
             return response.json();
           }
         );
+      }
+
+      function setColour(response) {
+        if (response.types[0].type.name === "psychic") {
+          pokemonImage.style.background = "#AB5F79";
+        } else if (response.types[0].type.name === "fire") {
+          pokemonImage.style.background = "#D2765E";
+        } else if (response.types[0].type.name === "water") {
+          pokemonImage.style.background = "#70BFE3";
+        } else if (response.types[0].type.name === "bug") {
+          pokemonImage.style.background = "#A1CC86";
+        } else if (response.types[0].type.name === "normal") {
+          pokemonImage.style.background = "#C9BEB5";
+        } else if (response.types[0].type.name === "poison") {
+          pokemonImage.style.background = "#9A67AA";
+        } else if (response.types[0].type.name === "electric") {
+          pokemonImage.style.background = "#F2D330";
+        } else if (response.types[0].type.name === "ground") {
+          pokemonImage.style.background = "#C99477";
+        } else if (response.types[0].type.name === "fairy") {
+          pokemonImage.style.background = "#F0B6BC";
+        } else if (response.types[0].type.name === "grass") {
+          pokemonImage.style.background = "#9CC061";
+        } else if (response.types[0].type.name === "fighting") {
+          pokemonImage.style.background = "#D2AE86";
+        } else if (response.types[0].type.name === "rock") {
+          pokemonImage.style.background = "#9A8B6B";
+        } else if (response.types[0].type.name === "ghost") {
+          pokemonImage.style.background = "#81345B";
+        } else if (response.types[0].type.name === "dragon") {
+          pokemonImage.style.background = "#CEC7BD";
+        }
       }
 
       let form = document.querySelector("form");
