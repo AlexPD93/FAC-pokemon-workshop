@@ -8,6 +8,7 @@
     <title>Pokemon API</title>
   </head>
   <body>
+    <h1>Pokemon Search</h1>
     <form action="">
       <input type="search" />
       <button type="submit">Submit</button>
@@ -15,13 +16,15 @@
     <div id="pokemonInfoContainer">
       <div id="pokemonName"></div>
       <img id="pokemonPic" />
-      <div id="pokemonStats"></div>
+      <div id="pokemonType"></div>
+      <div id="pokemonMove"></div>
       <div id="error"></div>
     </div>
     <script>
       let pokemonName = document.getElementById("pokemonName");
       let pokemonImage = document.getElementById("pokemonPic");
-      let pokemonStats = document.getElementById("pokemonStats");
+      let pokemonStats = document.getElementById("pokemonType");
+      let pokemonMove = document.getElementById("pokemonMove");
 
       function handleSubmit(event) {
         event.preventDefault();
@@ -33,10 +36,17 @@
         fetchPokemon(pokemon)
           .then((response) => {
             setColour(response);
-            console.log(response);
             pokemonName.innerHTML =
               response.name.slice(0, 1).toUpperCase() + response.name.slice(1);
             pokemonPic.src = response.sprites.front_default;
+            pokemonType.innerHTML = `Type: ${
+              response.types[0].type.name.slice(0, 1).toUpperCase() +
+              response.types[0].type.name.slice(1)
+            }`;
+            pokemonMove.innerHTML = `Move: ${
+              response.moves[2].move.name.slice(0, 1).toUpperCase() +
+              response.moves[2].move.name.slice(1)
+            }`;
           })
           .catch((error) => {
             errorMessage.innerHTML = error;
@@ -54,33 +64,33 @@
 
       function setColour(response) {
         if (response.types[0].type.name === "psychic") {
-          pokemonImage.style.background = "#AB5F79";
+          pokemonInfoContainer.style.background = "#AB5F79";
         } else if (response.types[0].type.name === "fire") {
-          pokemonImage.style.background = "#D2765E";
+          pokemonInfoContainer.style.background = "#D2765E";
         } else if (response.types[0].type.name === "water") {
-          pokemonImage.style.background = "#70BFE3";
+          pokemonInfoContainer.style.background = "#70BFE3";
         } else if (response.types[0].type.name === "bug") {
-          pokemonImage.style.background = "#A1CC86";
+          pokemonInfoContainer.style.background = "#A1CC86";
         } else if (response.types[0].type.name === "normal") {
-          pokemonImage.style.background = "#C9BEB5";
+          pokemonInfoContainer.style.background = "#C9BEB5";
         } else if (response.types[0].type.name === "poison") {
-          pokemonImage.style.background = "#9A67AA";
+          pokemonInfoContainer.style.background = "#9A67AA";
         } else if (response.types[0].type.name === "electric") {
-          pokemonImage.style.background = "#F2D330";
+          pokemonInfoContainer.style.background = "#F2D330";
         } else if (response.types[0].type.name === "ground") {
-          pokemonImage.style.background = "#C99477";
+          pokemonInfoContainer.style.background = "#C99477";
         } else if (response.types[0].type.name === "fairy") {
-          pokemonImage.style.background = "#F0B6BC";
+          pokemonInfoContainer.style.background = "#F0B6BC";
         } else if (response.types[0].type.name === "grass") {
-          pokemonImage.style.background = "#9CC061";
+          pokemonInfoContainer.style.background = "#9CC061";
         } else if (response.types[0].type.name === "fighting") {
-          pokemonImage.style.background = "#D2AE86";
+          pokemonInfoContainer.style.background = "#D2AE86";
         } else if (response.types[0].type.name === "rock") {
-          pokemonImage.style.background = "#9A8B6B";
+          pokemonInfoContainer.style.background = "#9A8B6B";
         } else if (response.types[0].type.name === "ghost") {
-          pokemonImage.style.background = "#81345B";
+          pokemonInfoContainer.style.background = "#81345B";
         } else if (response.types[0].type.name === "dragon") {
-          pokemonImage.style.background = "#CEC7BD";
+          pokemonInfoContainer.style.background = "#CEC7BD";
         }
       }
 

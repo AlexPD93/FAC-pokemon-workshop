@@ -1,3 +1,6 @@
+h1 {
+  text-align: center;
+}
 form {
   display: flex;
   align-items: center;
@@ -11,9 +14,13 @@ form {
 }
 
 #pokemonInfoContainer {
+  max-width: 30%;
+  margin: 0 auto;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   flex-direction: column;
+  border-radius: 10px;
 }
 
 #pokemonName {
@@ -23,6 +30,7 @@ form {
 
 #pokemonPic {
   margin: 0 auto;
+  width: 6rem;
 }
 
 #error {
