@@ -13,7 +13,7 @@
   </head>
   <body>
     <h1>Pokémon Search</h1>
-    <h2>Search for you favourite Pokémon.</h2>
+    <h2>Search for you favourite original 151 Pokémon.</h2>
     <form action="">
       <input type="search" />
       <button type="submit">Submit</button>
@@ -97,6 +97,8 @@
           pokemonInfoContainer.style.background = "#81345B";
         } else if (response.types[0].type.name === "dragon") {
           pokemonInfoContainer.style.background = "#CEC7BD";
+        } else if (response.types[0].type.name === "ice") {
+          pokemonInfoContainer.style.background = "#4D98B7";
         }
       }
 
