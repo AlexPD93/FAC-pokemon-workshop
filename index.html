@@ -12,7 +12,8 @@
     <title>Pokemon API</title>
   </head>
   <body>
-    <h1>Pokemon Search</h1>
+    <h1>Pokémon Search</h1>
+    <h2>Search for you favourite Pokémon.</h2>
     <form action="">
       <input type="search" />
       <button type="submit">Submit</button>
@@ -53,7 +54,8 @@
             }`;
           })
           .catch((error) => {
-            errorMessage.innerHTML = error;
+            console.log(error);
+            errorMessage.innerHTML = `That pokémon doesn't exist. Please try again.`;
           });
       }
 
