@@ -21,10 +21,6 @@ form {
   text-decoration: none;
 }
 
-#pokemonPic {
-  border-radius: 10px;
-}
-
 #pokemonInfoContainer {
   max-width: 30%;
   margin: 0 auto;
